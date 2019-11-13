@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IntraPortalModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CMS_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleDisplayName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RoleDescription" Type="nvarchar(max)" />
+          <Property Name="SiteID" Type="int" />
+          <Property Name="RoleGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleLastModified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="RoleGroupID" Type="int" />
+          <Property Name="RoleIsGroupAdministrator" Type="bit" />
+          <Property Name="RoleIsDomain" Type="bit" />
+        </EntityType>
+        <EntityType Name="CMS_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="450" />
+          <Property Name="Email" Type="nvarchar" MaxLength="254" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PreferredCultureCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="PreferredUICultureCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="UserEnabled" Type="bit" Nullable="false" />
+          <Property Name="UserIsExternal" Type="bit" />
+          <Property Name="UserPasswordFormat" Type="nvarchar" MaxLength="10" />
+          <Property Name="UserCreated" Type="datetime2" Precision="7" />
+          <Property Name="LastLogon" Type="datetime2" Precision="7" />
+          <Property Name="UserStartingAliasPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserLastModified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UserLastLogonInfo" Type="nvarchar(max)" />
+          <Property Name="UserIsHidden" Type="bit" />
+          <Property Name="UserVisibility" Type="nvarchar(max)" />
+          <Property Name="UserIsDomain" Type="bit" />
+          <Property Name="UserHasAllowedCultures" Type="bit" />
+          <Property Name="UserMFRequired" Type="bit" />
+          <Property Name="UserPrivilegeLevel" Type="int" Nullable="false" />
+          <Property Name="UserSecurityStamp" Type="nvarchar" MaxLength="72" />
+          <Property Name="UserMFSecret" Type="varbinary(max)" />
+          <Property Name="UserMFTimestep" Type="bigint" />
+        </EntityType>
+        <EntityType Name="CMS_UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="ValidTo" Type="datetime2" Precision="7" />
+          <Property Name="UserRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CMS_UserRole_RoleID_CMS_Role">
+          <End Role="CMS_Role" Type="Self.CMS_Role" Multiplicity="1" />
+          <End Role="CMS_UserRole" Type="Self.CMS_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="CMS_UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_UserRole_UserID_CMS_User">
+          <End Role="CMS_User" Type="Self.CMS_User" Multiplicity="1" />
+          <End Role="CMS_UserRole" Type="Self.CMS_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CMS_UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IntraPortalModel1StoreContainer">
+          <EntitySet Name="CMS_Role" EntityType="Self.CMS_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_User" EntityType="Self.CMS_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_UserRole" EntityType="Self.CMS_UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CMS_UserRole_RoleID_CMS_Role" Association="Self.FK_CMS_UserRole_RoleID_CMS_Role">
+            <End Role="CMS_Role" EntitySet="CMS_Role" />
+            <End Role="CMS_UserRole" EntitySet="CMS_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_UserRole_UserID_CMS_User" Association="Self.FK_CMS_UserRole_UserID_CMS_User">
+            <End Role="CMS_User" EntitySet="CMS_User" />
+            <End Role="CMS_UserRole" EntitySet="CMS_UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IntraPortalModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CMS_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleDisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SiteID" Type="Int32" />
+          <Property Name="RoleGUID" Type="Guid" Nullable="false" />
+          <Property Name="RoleLastModified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="RoleGroupID" Type="Int32" />
+          <Property Name="RoleIsGroupAdministrator" Type="Boolean" />
+          <Property Name="RoleIsDomain" Type="Boolean" />
+          <NavigationProperty Name="CMS_UserRole" Relationship="Self.FK_CMS_UserRole_RoleID_CMS_Role" FromRole="CMS_Role" ToRole="CMS_UserRole" />
+        </EntityType>
+        <EntityType Name="CMS_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PreferredCultureCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PreferredUICultureCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="UserIsExternal" Type="Boolean" />
+          <Property Name="UserPasswordFormat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserCreated" Type="DateTime" Precision="7" />
+          <Property Name="LastLogon" Type="DateTime" Precision="7" />
+          <Property Name="UserStartingAliasPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserGUID" Type="Guid" Nullable="false" />
+          <Property Name="UserLastModified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UserLastLogonInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserIsHidden" Type="Boolean" />
+          <Property Name="UserVisibility" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserIsDomain" Type="Boolean" />
+          <Property Name="UserHasAllowedCultures" Type="Boolean" />
+          <Property Name="UserMFRequired" Type="Boolean" />
+          <Property Name="UserPrivilegeLevel" Type="Int32" Nullable="false" />
+          <Property Name="UserSecurityStamp" Type="String" MaxLength="72" FixedLength="false" Unicode="true" />
+          <Property Name="UserMFSecret" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UserMFTimestep" Type="Int64" />
+          <NavigationProperty Name="CMS_UserRole" Relationship="Self.FK_CMS_UserRole_UserID_CMS_User" FromRole="CMS_User" ToRole="CMS_UserRole" />
+        </EntityType>
+        <EntityType Name="CMS_UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="ValidTo" Type="DateTime" Precision="7" />
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CMS_Role" Relationship="Self.FK_CMS_UserRole_RoleID_CMS_Role" FromRole="CMS_UserRole" ToRole="CMS_Role" />
+          <NavigationProperty Name="CMS_User" Relationship="Self.FK_CMS_UserRole_UserID_CMS_User" FromRole="CMS_UserRole" ToRole="CMS_User" />
+        </EntityType>
+        <Association Name="FK_CMS_UserRole_RoleID_CMS_Role">
+          <End Role="CMS_Role" Type="Self.CMS_Role" Multiplicity="1" />
+          <End Role="CMS_UserRole" Type="Self.CMS_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="CMS_UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_UserRole_UserID_CMS_User">
+          <End Role="CMS_User" Type="Self.CMS_User" Multiplicity="1" />
+          <End Role="CMS_UserRole" Type="Self.CMS_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CMS_UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IntraPortalEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CMS_Role" EntityType="Self.CMS_Role" />
+          <EntitySet Name="CMS_User" EntityType="Self.CMS_User" />
+          <EntitySet Name="CMS_UserRole" EntityType="Self.CMS_UserRole" />
+          <AssociationSet Name="FK_CMS_UserRole_RoleID_CMS_Role" Association="Self.FK_CMS_UserRole_RoleID_CMS_Role">
+            <End Role="CMS_Role" EntitySet="CMS_Role" />
+            <End Role="CMS_UserRole" EntitySet="CMS_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_UserRole_UserID_CMS_User" Association="Self.FK_CMS_UserRole_UserID_CMS_User">
+            <End Role="CMS_User" EntitySet="CMS_User" />
+            <End Role="CMS_UserRole" EntitySet="CMS_UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IntraPortalModel1StoreContainer" CdmEntityContainer="IntraPortalEntities1">
+          <EntitySetMapping Name="CMS_Role">
+            <EntityTypeMapping TypeName="IntraPortalModel1.CMS_Role">
+              <MappingFragment StoreEntitySet="CMS_Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleDisplayName" ColumnName="RoleDisplayName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="RoleGUID" ColumnName="RoleGUID" />
+                <ScalarProperty Name="RoleLastModified" ColumnName="RoleLastModified" />
+                <ScalarProperty Name="RoleGroupID" ColumnName="RoleGroupID" />
+                <ScalarProperty Name="RoleIsGroupAdministrator" ColumnName="RoleIsGroupAdministrator" />
+                <ScalarProperty Name="RoleIsDomain" ColumnName="RoleIsDomain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_User">
+            <EntityTypeMapping TypeName="IntraPortalModel1.CMS_User">
+              <MappingFragment StoreEntitySet="CMS_User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="PreferredCultureCode" ColumnName="PreferredCultureCode" />
+                <ScalarProperty Name="PreferredUICultureCode" ColumnName="PreferredUICultureCode" />
+                <ScalarProperty Name="UserEnabled" ColumnName="UserEnabled" />
+                <ScalarProperty Name="UserIsExternal" ColumnName="UserIsExternal" />
+                <ScalarProperty Name="UserPasswordFormat" ColumnName="UserPasswordFormat" />
+                <ScalarProperty Name="UserCreated" ColumnName="UserCreated" />
+                <ScalarProperty Name="LastLogon" ColumnName="LastLogon" />
+                <ScalarProperty Name="UserStartingAliasPath" ColumnName="UserStartingAliasPath" />
+                <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserLastLogonInfo" ColumnName="UserLastLogonInfo" />
+                <ScalarProperty Name="UserIsHidden" ColumnName="UserIsHidden" />
+                <ScalarProperty Name="UserVisibility" ColumnName="UserVisibility" />
+                <ScalarProperty Name="UserIsDomain" ColumnName="UserIsDomain" />
+                <ScalarProperty Name="UserHasAllowedCultures" ColumnName="UserHasAllowedCultures" />
+                <ScalarProperty Name="UserMFRequired" ColumnName="UserMFRequired" />
+                <ScalarProperty Name="UserPrivilegeLevel" ColumnName="UserPrivilegeLevel" />
+                <ScalarProperty Name="UserSecurityStamp" ColumnName="UserSecurityStamp" />
+                <ScalarProperty Name="UserMFSecret" ColumnName="UserMFSecret" />
+                <ScalarProperty Name="UserMFTimestep" ColumnName="UserMFTimestep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_UserRole">
+            <EntityTypeMapping TypeName="IntraPortalModel1.CMS_UserRole">
+              <MappingFragment StoreEntitySet="CMS_UserRole">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MyIntranetPortal.Models.CMS_Role>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleDisplayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleGUID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleLastModified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleGroupID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleIsGroupAdministrator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleIsDomain)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleDisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleGUID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleLastModified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleGroupID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleIsGroupAdministrator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleIsDomain)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoleID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,234 @@
+﻿@model MyIntranetPortal.Models.CMS_User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CMS_User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreferredCultureCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreferredCultureCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreferredUICultureCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreferredUICultureCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEnabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEnabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserIsExternal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserIsExternal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPasswordFormat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPasswordFormat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastLogon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastLogon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserStartingAliasPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserStartingAliasPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserGUID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserGUID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserLastModified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserLastModified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserLastLogonInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserLastLogonInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserIsHidden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserIsHidden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserVisibility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserVisibility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserIsDomain)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserIsDomain)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserHasAllowedCultures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserHasAllowedCultures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMFRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserMFRequired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPrivilegeLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPrivilegeLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserSecurityStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserSecurityStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMFSecret)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserMFSecret)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMFTimestep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserMFTimestep)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

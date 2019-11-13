@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MyIntranetPortal.Models.CMS_User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div align="center" style="background-color:#A52A2A" class="jumbotron">
+    <h1 align="center" font-family: serif">My Portal</h1>
+    <h2 align="center">Welcome!</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 align="center" style="font-family: serif; ">The Users</h2>
+
+
+        <div align="center">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                <p>
+                    <span style="font-size: 20px; font-family: serif; color:darkslategrey">Search By:</span>&nbsp UserName: @Html.RadioButton("searchBy", "username", true) &nbsp&nbsp
+                    FullName: @Html.RadioButton("searchBy", "fullname") &nbsp&nbsp
+                    Email: @Html.RadioButton("searchBy", "email")
+                    <br />
+
+                    @Html.TextBox("search", null, new { style = " border: 2px solid #555; width: 300px;" })
+                    <span><input type="submit" value="Search" class="btn btn-outline-info"} /></span>
+                </p>
+            }
+        </div>
+
+        <p>
+      
+            <button type="button" class="btn btn-outline-secondary" style="color:green" onclick="location.href='@Url.Action("Create", "Home")'" ><i class="fa fa-plus"></i>Add New User</button>
+        </p>
+        <br />
+
+
+        <div>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th></th>
+                    <th></th>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Show More", "Details", new { id = item.UserID })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @style = "color:#A52A2A;" })
+                        </td>
+                    </tr>
+                }
+                </table>
+
+            </div>
+        </div>
+
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </div>

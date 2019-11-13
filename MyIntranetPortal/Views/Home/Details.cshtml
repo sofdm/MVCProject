@@ -1,0 +1,88 @@
+﻿@model MyIntranetPortal.Models.ViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br/>
+<br/>
+<br/>
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3 align="center">@Html.DisplayFor(model => model.users.UserName)  -Details</h3>
+                <br />
+                <ul class="list-group">
+                    <li class="list-group-item">
+
+                        Username:<p class="list-group-item">@Html.DisplayFor(model => model.users.UserName) </p>
+                    </li>
+                    <li class="list-group-item">
+                        LastName:
+                        <p class="list-group-item">@Html.DisplayFor(model => model.users.LastName) </p>
+                    </li>
+                    <li class="list-group-item">
+                        MiddleName:
+                        <p class="list-group-item">@Html.DisplayFor(model => model.users.MiddleName) </p>
+                    </li>
+                    <li class="list-group-item">
+                        FullName:
+                        <p class="list-group-item">@Html.DisplayFor(model => model.users.FullName) </p>
+                    </li>
+                    <li class="list-group-item">
+                        Email:
+                        <p class="list-group-item">@Html.DisplayFor(model => model.users.Email) </p>
+                    </li>
+                    <li class="list-group-item">
+                        UserPassword:
+                        <p class="list-group-item">@Html.DisplayFor(model => model.users.UserPassword) </p>
+                    </li>
+                </ul>
+
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.users.UserID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.users.UserID })
+                    <br />
+
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6" style="background-color:#A52A2A;">
+                @if (Model.roles.Count() == 0)
+                {
+                    <h1 style="text-align: center">Roles</h1>
+                    <p style="text-align: center"> @Html.DisplayFor(model => model.users.UserName) has not roles </p>
+                }
+                else
+                {
+                    <h3 align="center">Roles of @Html.DisplayFor(model => model.users.UserName) </h3>
+                    <br />
+                    <ul>
+                        <li class="list-group-item">
+                            @foreach (var role in Model.roles)
+                            {
+                                <ul style="list-style-type:square;">
+                                    <li>
+                                        <p class="list-group-item"> @role.RoleDisplayName @Html.ActionLink("Delete", "Delete", new { id = Model.roles }, new { @style = "color:#A52A2A;" });</p>
+                                        <br />
+                                    </li>
+                                </ul>
+                            }
+
+                        </li>
+                    </ul>
+                }
+                <p align="center">@Html.ActionLink("Add Role", "Create", "Role", new { id = Model.users.UserID })</p>
+            </div>
+            <p>
+                <br />
+            </p>   
+        </div>
+        <br/>
+        <br/>
+        <p align="right"> @Html.ActionLink("Back to List", "Index")</p>
+    </div>

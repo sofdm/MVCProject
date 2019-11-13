@@ -1,0 +1,190 @@
+﻿@model IEnumerable<MyIntranetPortal.Models.CMS_User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreferredCultureCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreferredUICultureCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEnabled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserIsExternal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPasswordFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastLogon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserStartingAliasPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserGUID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserLastModified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserLastLogonInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserIsHidden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserVisibility)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserIsDomain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserHasAllowedCultures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserMFRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPrivilegeLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserSecurityStamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserMFSecret)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserMFTimestep)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreferredCultureCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreferredUICultureCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEnabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserIsExternal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPasswordFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastLogon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserStartingAliasPath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserGUID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserLastModified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserLastLogonInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserIsHidden)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserVisibility)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserIsDomain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserHasAllowedCultures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserMFRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPrivilegeLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserSecurityStamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserMFSecret)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserMFTimestep)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>

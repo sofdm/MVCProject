@@ -1,0 +1,42 @@
+﻿@model MyIntranetPortal.Models.CMS_UserRole
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CMS_UserRole</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ValidTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValidTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CMS_Role.RoleDisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CMS_Role.RoleDisplayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CMS_User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CMS_User.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserRoleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
