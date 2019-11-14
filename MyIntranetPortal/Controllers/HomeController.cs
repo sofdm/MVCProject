@@ -84,6 +84,7 @@ namespace MyIntranetPortal.Controllers
 
             db.CMS_User.Remove(cMS_User);
             db.SaveChanges();
+            TempData["delete"] = "success";
             return RedirectToAction("Index");
         }
 

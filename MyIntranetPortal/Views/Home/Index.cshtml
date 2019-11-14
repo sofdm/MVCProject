@@ -11,6 +11,14 @@
         <strong>Well done!</strong> The User was successfully added in the list.
     </div>
 }
+
+@if (TempData["delete"] != null)
+{
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>The User was removed from the list.</strong>
+</div>
+}
 <div align="center" style="background-color:#A52A2A" class="jumbotron">
     <h1 align="center" font-family: serif">My Portal</h1>
     <h2 align="center">Welcome!</h2>
@@ -74,7 +82,8 @@
                             @Html.ActionLink("Show More", "Details", new { id = item.UserID })
                         </td>
                         <td>
-                            @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @style = "color:#A52A2A;" })
+                            
+                            <i class="fa fa-trash-o" aria-hidden="true" style="color:darkgoldenrod; width:10px;"></i> @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @style = "color:#A52A2A;" })
                         </td>
                     </tr>
                 }
