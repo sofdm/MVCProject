@@ -4,7 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Well done!</strong> The User was successfully added in the list.
+    </div>
+}
 <div align="center" style="background-color:#A52A2A" class="jumbotron">
     <h1 align="center" font-family: serif">My Portal</h1>
     <h2 align="center">Welcome!</h2>
@@ -25,14 +31,14 @@
                     <br />
 
                     @Html.TextBox("search", null, new { style = " border: 2px solid #555; width: 300px;" })
-                    <span><input type="submit" value="Search" class="btn btn-outline-info"} /></span>
+                    <span><input type="submit" value="Search" class="btn btn-outline-info" } /></span>
                 </p>
             }
         </div>
 
         <p>
-      
-            <button type="button" class="btn btn-outline-secondary" style="color:green" onclick="location.href='@Url.Action("Create", "Home")'" ><i class="fa fa-plus"></i>Add New User</button>
+
+            <button type="button" class="btn btn-outline-secondary" style="color:green" onclick="location.href='@Url.Action("Create", "Home")'"><i class="fa fa-plus"></i>Add New User</button>
         </p>
         <br />
 

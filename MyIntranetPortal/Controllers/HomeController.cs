@@ -22,7 +22,7 @@ namespace MyIntranetPortal.Controllers
         {
             if (searchBy == "username")
             {
-                return View(db.CMS_User.Where(x => x.UserName.Contains(search) || search == null).ToList());
+                return View(db.CMS_User.Where(x => x.UserName.StartsWith(search) || search == null).ToList());
             }
             else if (searchBy == "fullname")
             {
@@ -99,20 +99,25 @@ namespace MyIntranetPortal.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "UserID,UserName,FirstName,MiddleName,LastName,FullName,Email,UserPassword,PreferredCultureCode,PreferredUICultureCode,UserEnabled,UserIsExternal,UserPasswordFormat,UserCreated,LastLogon,UserStartingAliasPath,UserGUID,UserLastModified,UserLastLogonInfo,UserIsHidden,UserVisibility,UserIsDomain,UserHasAllowedCultures,UserMFRequired,UserPrivilegeLevel,UserSecurityStamp,UserMFSecret,UserMFTimestep")] CMS_User cMS_User)
-        public ActionResult Create([Bind(Include = "UserName,UserPassword")] CMS_User cMS_User)
-        {
+        public ActionResult Create([Bind(Include = "UserName,UserPassword,LastName,MiddleName,FullName,Email")] CMS_User cMS_User)
+        {   
+            cMS_User.UserGUID = Guid.NewGuid();
             try
             {
                 if (ModelState.IsValid)
-                {
+                {           
                     db.CMS_User.Add(cMS_User);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    TempData["message"] = "success";
                 }
             }
             catch (Exception ex)
-            { }
-            return View(cMS_User);
+            {
+                throw ex;
+            }
+       
+            return RedirectToAction("Index");
+            //return View(cMS_User);
         }
 
 
@@ -177,7 +182,6 @@ namespace MyIntranetPortal.Controllers
             }
             base.Dispose(disposing);
         }
-
 
     }
 }
