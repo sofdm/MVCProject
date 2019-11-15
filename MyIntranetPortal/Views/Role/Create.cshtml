@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>CMS_Role</h4>
         <hr />
@@ -97,6 +97,11 @@
         </div>
     </div>
 }
+
+
+<div>
+    <p>Made some changes here</p>
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
