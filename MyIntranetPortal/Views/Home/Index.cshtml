@@ -8,7 +8,7 @@
 {
     <div class="alert alert-dismissible alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Well done!</strong> The User was successfully added in the list.
+        <strong>The User was successfully added in the list.</strong>
     </div>
 }
 
@@ -81,8 +81,7 @@
                         <td>
                             @Html.ActionLink("Show More", "Details", new { id = item.UserID })
                         </td>
-                        <td>
-                            
+                        <td>          
                             <i class="fa fa-trash-o" aria-hidden="true" style="color:darkgoldenrod; width:10px;"></i> @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @style = "color:#A52A2A;" })
                         </td>
                     </tr>

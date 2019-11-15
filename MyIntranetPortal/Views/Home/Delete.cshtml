@@ -10,13 +10,13 @@
 
 <div>
     <h4>CMS_User</h4>
-   <hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
-        <dd>
+        <dd style="color:lightslategray;">
             @Html.DisplayFor(model => model.UserName)
         </dd>
 
@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
-        <dd>
+        <dd style="color:lightslategray;">
             @Html.DisplayFor(model => model.FirstName)
         </dd>
 
@@ -32,7 +32,7 @@
             @Html.DisplayNameFor(model => model.MiddleName)
         </dt>
 
-        <dd>
+        <dd style="color:lightslategray;">
             @Html.DisplayFor(model => model.MiddleName)
         </dd>
 
@@ -40,7 +40,7 @@
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
 
-        <dd>
+        <dd style="color:lightslategray;">
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
@@ -48,7 +48,7 @@
             @Html.DisplayNameFor(model => model.FullName)
         </dt>
 
-        <dd>
+        <dd style="color:lightslategray;">
             @Html.DisplayFor(model => model.FullName)
         </dd>
 
@@ -56,7 +56,7 @@
             @Html.DisplayNameFor(model => model.Email)
         </dt>
 
-        <dd>
+        <dd style="color:lightslategray;">
             @Html.DisplayFor(model => model.Email)
         </dd>
 
@@ -64,7 +64,7 @@
             @Html.DisplayNameFor(model => model.UserPassword)
         </dt>
 
-        <dd>
+        <dd style="color:lightslategray;">
             @Html.DisplayFor(model => model.UserPassword)
         </dd>
     </dl>
@@ -74,8 +74,10 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <button type="submit" class="btn btn-outline-danger">Delete</button> |  
-           @Html.ActionLink("Back to List", "Index")
+            <button type="submit" class="btn btn-outline-danger">Delete</button>
+
         </div>
+
+        @Html.ActionLink("Back to List", "Index", null, new { @style = "font-size:larger;color:white;float: right" })
     }
 </div>

@@ -100,7 +100,7 @@ namespace MyIntranetPortal.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "UserID,UserName,FirstName,MiddleName,LastName,FullName,Email,UserPassword,PreferredCultureCode,PreferredUICultureCode,UserEnabled,UserIsExternal,UserPasswordFormat,UserCreated,LastLogon,UserStartingAliasPath,UserGUID,UserLastModified,UserLastLogonInfo,UserIsHidden,UserVisibility,UserIsDomain,UserHasAllowedCultures,UserMFRequired,UserPrivilegeLevel,UserSecurityStamp,UserMFSecret,UserMFTimestep")] CMS_User cMS_User)
-        public ActionResult Create([Bind(Include = "UserName,UserPassword,LastName,MiddleName,FullName,Email")] CMS_User cMS_User)
+        public ActionResult Create([Bind(Include = "UserName,FirstName,UserPassword,LastName,MiddleName,FullName,Email")] CMS_User cMS_User)
         {   
             cMS_User.UserGUID = Guid.NewGuid();
             try
@@ -110,6 +110,7 @@ namespace MyIntranetPortal.Controllers
                     db.CMS_User.Add(cMS_User);
                     db.SaveChanges();
                     TempData["message"] = "success";
+
                 }
             }
             catch (Exception ex)
