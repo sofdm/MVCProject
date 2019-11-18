@@ -149,33 +149,60 @@ namespace MyIntranetPortal.Controllers
 
 
         // GET: UserRole/Delete/5
-        public ActionResult DeleteRole(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CMS_UserRole cMS_UserRole = db.CMS_UserRole.Find(id);
-            if (cMS_UserRole == null)
-            {
-                return HttpNotFound();
-            }
+        /*  public ActionResult DeleteRole(int? id)
+         {
+             if (id == null)
+             {
+                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+             }
+             CMS_UserRole cMS_UserRole = db.CMS_UserRole.Find(id);
+             if (cMS_UserRole == null)
+             {
+                 return HttpNotFound();
+             }
 
-            return View(cMS_UserRole);
-        }
+             return View(cMS_UserRole);
+         }
 
-        // POST: UserRole/Delete/5
+         // POST: UserRole/Delete/5
         [HttpPost, ActionName("DeleteRole")]
+         [ValidateAntiForgeryToken]
+         public ActionResult DeleteRoleConfirmed(int id)
+         {
+             CMS_UserRole cMS_UserRole = db.CMS_UserRole.Find(id);
+
+             db.CMS_UserRole.Remove(cMS_UserRole);
+             db.SaveChanges();
+             return RedirectToAction("Index");
+         }*/
+
+        // GET: Role/Delete/5
+        public ActionResult DeleteRole(int? id)
+         {
+             if (id == null)
+             {
+                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+             }
+             CMS_Role cMS_Role = db.CMS_Role.Find(id);
+             if (cMS_Role == null)
+             {
+                 return HttpNotFound();
+             }
+             return View(cMS_Role);
+         }
+
+        // POST: Role/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteRoleConfirmed(int id)
         {
-            CMS_UserRole cMS_UserRole = db.CMS_UserRole.Find(id);
-
-            db.CMS_UserRole.Remove(cMS_UserRole);
+            CMS_Role cMS_Role = db.CMS_Role.Find(id);
+            db.CMS_Role.Remove(cMS_Role);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
 
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

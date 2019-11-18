@@ -65,7 +65,7 @@
                         {
                             <ul style="list-style-type:square;">
                                 <li>
-                                    <p class="list-group-item"> @role.RoleDisplayName @Html.ActionLink("Delete", "Delete", new { id = Model.roles }, new { @style = "color:#A52A2A;" });</p>
+                                    <p class="list-group-item"> @role.RoleDisplayName @Html.ActionLink("Delete Role", "DeleteRole", new { id = role.RoleID }, new { @style = "color:#A52A2A;" });</p>
                                     <br />
                                 </li>
                             </ul>
